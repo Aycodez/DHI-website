@@ -1,0 +1,89 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digital Horizon Investments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+  </head>
+  <body>
+    <div class="Login-container">
+      <h1>User Login</h1>
+
+      <form id="login-form">
+        <div class="form-control">
+          <label for="UserEmail">Email</label>
+          <input type="email" placeholder="name@example.com" id="login-email" />
+          <img src="images/mail.png" alt="" />
+        </div>
+
+        <div class="form-control">
+          <label for="UserPassword">Password</label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            id="login-password"
+            required
+          />
+          <!-- <i class="fa fa-key" aria-hidden="true"></i> -->
+          <img src="images/locked-computer.png" alt="" class="passwords" />
+        </div>
+
+        <button type="submit" class="btn purple">Sign in</button>
+      </form>
+      <p><strong>Forgot Passsword ?</strong></p>
+      <p>
+        Don't have an account?
+        <a class="sign-up" href="register.html">Sign in</a>
+        <!-- <button>Sign up</button> -->
+      </p>
+    </div>
+    <script>
+      const loginForm = document.getElementById("login-form");
+      const userEmail = document.querySelector("#login-email");
+      const userPassword = document.querySelector("#login-password");
+      loginForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        getData();
+      });
+      const passwordVisibilty = document.querySelector(".passwords");
+
+      passwordVisibilty.addEventListener("click", () => {
+        const password = passwordVisibilty.parentNode.children[1];
+        password.type = password.type === "password" ? "text" : "password";
+      });
+
+      async function getData() {
+        try {
+          const response = await fetch("admin.json");
+          if (!response.ok) throw Error(response.statusText);
+          const data = await response.json();
+          let c_password = data.password.toString().trim();
+          let userP = userPassword.value.toString().trim();
+
+          let c_email = data.name.toString().trim();
+          let userE = userEmail.value.toString().trim();
+
+          if (c_password == userP && c_email == userE) {
+            window.location.href = "index.html";
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    </script>
+  </body>
+</html>

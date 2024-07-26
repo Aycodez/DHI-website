@@ -1,0 +1,160 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+:root {
+    --primary-color: #05028bb7;
+    --dark-mode: #212121;
+    --light-mode: #d8baf0;
+}
+
+ 
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins';
+    font-size: 0.72rem;
+    background-color: var(--light-mode);
+
+}
+
+.Login-container{
+    background-color:#fff;
+    border-radius: 10px;
+    padding: 0 40px;
+    /* height: 80%; */
+}
+h1{
+    text-align: center;
+    margin: 10px;
+    font-weight: 300;
+    color: var(--primary-color);
+    
+}
+strong, p {
+    text-align: center;
+    margin: 15px auto;
+}
+.sign-up {
+    color: var(--primary-color);
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.form-control{
+    position: relative;
+    margin: 15px;
+}
+
+.form-control img {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    top: 40px;
+    left: 7px;
+}
+
+.form-control label {
+    color: var(--primary-color);
+    display: inline-block;
+    font-weight: bold;
+}
+
+.form-control input{
+    display: block;
+    width: 100%;
+    padding: 10px 35px;   
+    border: 2px solid #f0f0f0;
+    margin-top: 10px;
+    
+
+}
+.form-control input:focus{
+    outline-color: var(--primary-color);
+}
+
+.form-control.success input{
+    border-color: #2ecc71 ;
+}
+.form-control.error input{
+    border-color: #e74c3c ;
+}
+
+.form-control.success i.fa-check-circle {
+    visibility: visible;
+    color: #2ecc71; 
+}
+.form-control.error i.fa-exclamation-circle, 
+.form-control.error small {
+    visibility: visible;
+    color: #e74c3c;
+    
+}
+
+.form-control i {
+    position: absolute;
+    visibility: hidden;
+    top: 40px;
+    right: 10px;
+}
+.form-control small {
+    visibility: hidden;
+}
+
+.btn.purple {
+    display: block;
+    width: 100%;
+    padding: 10px 30px;
+    border: 2px solid #a051c2;
+    border-radius: 5px;
+    background-color: #8e44ad;
+    color: white;
+    cursor: pointer; 
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+
+/* Loading page  */
+
+.loading-container{
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 20px;
+}
+
+.loading-container .loading {
+    background: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin: 0 10px;
+    animation: load 1s ease-in-out infinite;
+}
+.loading-container .loading.one {
+    animation-delay: 0.3s;
+}
+.loading-container .loading.two {
+    animation-delay: 0.4s;
+}
+.loading-container .loading.three {
+    animation-delay: 0.5s;
+}
+.loading-container .loading.four {
+    animation-delay: 0.6s;
+}
+
+@keyframes load{
+    0% {
+        width: 40px;
+        height: 40px;
+    }
+    50% {
+        width: 30px;
+        height: 30px;
+    }
+}
